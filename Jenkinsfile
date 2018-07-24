@@ -14,7 +14,9 @@ dotnetTemplate(podLabel) {
     }
     stage('test') {
       container('dotnet') {
-        sh(libraryResource('dotnet-test.sh'))
+        withEnv(["CONFIGURATION=$params.BUILD_CONFIGURATION"]) {
+          sh(libraryResource('dotnet-test.sh'))
+        }
       }
     }
   }
