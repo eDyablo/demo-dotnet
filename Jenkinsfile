@@ -14,10 +14,10 @@ dotnetTemplate(podLabel) {
     stage('test') {
       container('dotnet') {
         sh """
-          projects=`find . -regex ".*\\.Test\\.csproj"
+          projects=`find . -regex '.*\\.Test\\.csproj'
           for project in \$projects
           do
-            dotnet test \"\$project\" --configuration ${params.CONFIGURATION}
+            dotnet test $project --configuration ${params.CONFIGURATION}
           done
         """
       }
