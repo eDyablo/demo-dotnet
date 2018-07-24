@@ -4,7 +4,7 @@ def podLabel = "edworker-${UUID.randomUUID()}"
 properties([
   parameters([
     string(name: 'REPOSITORY', defaultValue: 'edyablo/demo-dotnet', description: 'Name of repository'),
-    choice(name: 'CONFIGURATION', defaultValue: 'Debug', choices: ['Debug', 'Release'].join('\n'), description: 'Build configuration'),
+    choice(name: 'BUILD_CONFIGURATION', defaultValue: 'Debug', choices: ['Debug', 'Release'].join('\n'), description: 'Build configuration'),
   ])
 ])
 dotnetTemplate(podLabel) {
