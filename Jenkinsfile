@@ -1,3 +1,5 @@
+@Library('ed-shared-lib@use-sh-resource)_
+
 def podLabel = "edworker-${UUID.randomUUID()}"
 properties([
   parameters([
@@ -12,13 +14,7 @@ dotnetTemplate(podLabel) {
     }
     stage('test') {
       container('dotnet') {
-        sh """
-          projects=`find . -regex '.*\\.Test\\.csproj'`
-          for project in \$projects
-          do
-            dotnet test \$project --configuration ${params.CONFIGURATION}
-          done
-        """
+        sh(libraryResource('dotnet-test.sh'))
       }
     }
   }
