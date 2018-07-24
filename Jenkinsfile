@@ -1,4 +1,4 @@
-@Library('ed-shared-lib@use-sh-resource)_
+@Library('ed-shared-lib@use-sh-resource')_
 
 def podLabel = "edworker-${UUID.randomUUID()}"
 properties([
